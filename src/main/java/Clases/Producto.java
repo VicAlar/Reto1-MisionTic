@@ -10,13 +10,17 @@ package Clases;
  */
 public class Producto {
     private String id;
-    private String denominacion;
+    private String nombre;
     private String proveedor;
+    private String descripcion;
+    private int precio;
 
-    public Producto(String id, String denominacion, String proveedor) {
+    public Producto(String id, String nombre, String proveedor, String descripcion, int precio) {
         this.id = id;
-        this.denominacion = denominacion;
+        this.nombre = nombre;
         this.proveedor = proveedor;
+        this.descripcion = descripcion;
+        this.precio = precio;
     }
     
     /**
@@ -37,14 +41,14 @@ public class Producto {
      * @return the denominacion
      */
     public String getDenominacion() {
-        return denominacion;
+        return nombre;
     }
 
     /**
      * @param denominacion the denominacion to set
      */
     public void setDenominacion(String denominacion) {
-        this.denominacion = denominacion;
+        this.nombre = denominacion;
     }
 
     /**
@@ -59,5 +63,33 @@ public class Producto {
      */
     public void setProveedor(String proveedor) {
         this.proveedor = proveedor;
+    }
+
+    /**
+     * @return the descripcion
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * @param descripcion the descripcion to set
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    /**
+     * @return the precio
+     */
+    public int getPrecio() {
+        return precio;
+    }
+
+    /**
+     * @param precio the precio to set
+     */
+    public void setPrecio(int precio) {
+        this.precio = precio;
     }
 }

@@ -10,12 +10,12 @@ package Clases;
  */
 class LineaProducto extends Producto {
     private int cantidad;
-    private int precio;
+    private int precioTotal;
 
-    public LineaProducto(int cantidad, int precio, String id, String denominacion, String proveedor) {
-        super(id, denominacion, proveedor);
+    public LineaProducto(int cantidad, int precioTotal, String id, String nombre, String proveedor, String descripcion, int precio) {
+        super(id, nombre, proveedor, descripcion, precio);
         this.cantidad = cantidad;
-        this.precio = precio;
+        this.precioTotal = precioTotal;
     }
 
     /**
@@ -36,14 +36,14 @@ class LineaProducto extends Producto {
      * @return the precio
      */
     public int getPrecio() {
-        return precio;
+        return precioTotal;
     }
 
     /**
      * @param precio the precio to set
      */
     public void setPrecio(int precio) {
-        this.precio = precio;
+        this.precioTotal = precio;
     }
     
     
