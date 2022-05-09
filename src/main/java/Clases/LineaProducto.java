@@ -8,14 +8,13 @@ package Clases;
  *
  * @author pc
  */
-class LineaProducto extends Producto {
+public class LineaProducto {
     private int cantidad;
-    private int precioTotal;
+    private Producto producto;
 
-    public LineaProducto(int cantidad, int precioTotal, String id, String nombre, String proveedor, String descripcion, int precio) {
-        super(id, nombre, proveedor, descripcion, precio);
+    public LineaProducto(int cantidad, String nombre, int precio) {
         this.cantidad = cantidad;
-        this.precioTotal = precioTotal;
+        this.producto = new Producto(nombre, precio);
     }
 
     /**
@@ -33,17 +32,17 @@ class LineaProducto extends Producto {
     }
 
     /**
-     * @return the precio
+     * @return the producto
      */
-    public int getPrecio() {
-        return precioTotal;
+    public Producto getProducto() {
+        return producto;
     }
 
     /**
-     * @param precio the precio to set
+     * @param producto the producto to set
      */
-    public void setPrecio(int precio) {
-        this.precioTotal = precio;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
     
     

@@ -11,22 +11,32 @@ import java.util.Date;
  * @author Victor
  */
 public class Pago {
-    private String id;
+    private String idPago;
+    private Pedido idPedido;
     private Date fechaPago;
     private String Estado;
+
+    public Pago(String idPago, Pedido idPedido, Date fechaPago, String Estado) {
+        this.idPago = idPago;
+        this.idPedido = idPedido;
+        this.fechaPago = fechaPago;
+        this.Estado = Estado;
+    }
+    
+    
 
     /**
      * @return the id
      */
-    public String getId() {
-        return id;
+    public String getIdPago() {
+        return idPago;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(String id) {
-        this.id = id;
+    public void setIdPago(String idPago) {
+        this.idPago = idPago;
     }
 
     /**
@@ -55,5 +65,19 @@ public class Pago {
      */
     public void setEstado(String Estado) {
         this.Estado = Estado;
+    }
+
+    /**
+     * @return the idPedido
+     */
+    public Pedido getIdPedido() {
+        return idPedido;
+    }
+
+    /**
+     * @param idPedido the idPedido to set
+     */
+    public void setIdPedido(Pedido idPedido) {
+        this.idPedido = idPedido;
     }
 }

@@ -12,34 +12,40 @@ import java.util.Date;
  * @author pc
  */
 public class Pedido {
-    private String id;
+    private String idPedido;
     private String idCliente;
     private Date fechaRealizacion;
     private String estado;
     private int total;
-    private ArrayList<CarritoCompra> productosCarrito;
+    private CarritoCompra carritoCompra;
 
-    public Pedido(String id, String idCliente, Date fechaRealizacion, String estado, int total, ArrayList<CarritoCompra> productosCarrito) {
-        this.id = id;
+    public Pedido(String idPedido, String idCliente, Date fechaRealizacion, String estado, int total, CarritoCompra carritoCompra) {
+        this.idPedido = idPedido;
         this.idCliente = idCliente;
         this.fechaRealizacion = fechaRealizacion;
         this.estado = estado;
         this.total = total;
-        this.productosCarrito = new ArrayList();
+        this.carritoCompra = carritoCompra;
     }
+
+    public Pedido(String idPedido) {
+        this.idPedido = idPedido;
+    }
+    
+    
 
     /**
      * @return the id
      */
-    public String getId() {
-        return id;
+    public String getIdPedido() {
+        return idPedido;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(String id) {
-        this.id = id;
+    public void setId(String idPedido) {
+        this.idPedido = idPedido;
     }
 
     /**
@@ -85,20 +91,6 @@ public class Pedido {
     }
 
     /**
-     * @return the productosCarrito
-     */
-    public ArrayList<CarritoCompra> getProductosCarrito() {
-        return productosCarrito;
-    }
-
-    /**
-     * @param productosCarrito the productosCarrito to set
-     */
-    public void setProductosCarrito(ArrayList<CarritoCompra> productosCarrito) {
-        this.productosCarrito = productosCarrito;
-    }
-
-    /**
      * @return the idCliente
      */
     public String getIdCliente() {
@@ -110,5 +102,19 @@ public class Pedido {
      */
     public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
+    }
+
+    /**
+     * @return the carritoCompra
+     */
+    public CarritoCompra getCarritoCompra() {
+        return carritoCompra;
+    }
+
+    /**
+     * @param carritoCompra the carritoCompra to set
+     */
+    public void setCarritoCompra(CarritoCompra carritoCompra) {
+        this.carritoCompra = carritoCompra;
     }
 }

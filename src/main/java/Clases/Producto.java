@@ -12,17 +12,22 @@ public class Producto {
     private String id;
     private String nombre;
     private String proveedor;
-    private String descripcion;
     private int precio;
 
-    public Producto(String id, String nombre, String proveedor, String descripcion, int precio) {
+    public Producto(String id, String nombre, String proveedor, int precio) {
         this.id = id;
         this.nombre = nombre;
         this.proveedor = proveedor;
-        this.descripcion = descripcion;
+        this.precio = precio;
+    }
+
+    public Producto(String nombre, int precio) {
+        this.nombre = nombre;
         this.precio = precio;
     }
     
+    
+   
     /**
      * @return the id
      */
@@ -38,16 +43,16 @@ public class Producto {
     }
 
     /**
-     * @return the denominacion
+     * @return the nombre
      */
-    public String getDenominacion() {
+    public String getNombre() {
         return nombre;
     }
 
     /**
-     * @param denominacion the denominacion to set
+     * @param nombre the nombre to set
      */
-    public void setDenominacion(String denominacion) {
+    public void setNombre(String denominacion) {
         this.nombre = denominacion;
     }
 
@@ -65,23 +70,7 @@ public class Producto {
         this.proveedor = proveedor;
     }
 
-    /**
-     * @return the descripcion
-     */
-    public String getDescripcion() {
-        return descripcion;
-    }
 
-    /**
-     * @param descripcion the descripcion to set
-     */
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    /**
-     * @return the precio
-     */
     public int getPrecio() {
         return precio;
     }

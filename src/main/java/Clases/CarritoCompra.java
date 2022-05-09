@@ -19,6 +19,10 @@ public class CarritoCompra {
         this.fechaCreacion = fechaCreacion;
         this.productos = new ArrayList();
     }
+
+    public CarritoCompra(ArrayList<LineaProducto> productos) {
+        this.productos = new ArrayList();
+    }
     
     
 
