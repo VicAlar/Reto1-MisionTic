@@ -311,7 +311,7 @@ public class View extends javax.swing.JFrame {
 
         listaCarrito.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         listaCarrito.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "Producto 1", "Producto 2", "Producto 3", "Producto 4", "Producto 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -505,14 +505,15 @@ public class View extends javax.swing.JFrame {
                                     .addComponent(txtPrimerNombre))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(primerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtPrimerApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                                .addGap(31, 31, 31))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(telefonoClienteNatural, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtTelefenoClienteNatural, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(primerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtPrimerApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(telefonoClienteNatural, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtTelefenoClienteNatural, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)))
                                 .addGap(31, 31, 31)))
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createSequentialGroup()

@@ -11,24 +11,32 @@ import java.util.Date;
  * @author Victor
  */
 public class Envio {
-    private String id;
+    private String idEnvio;
     private String direccionEnvio;
     private String estadoEnvio;
     private Date fechaEnvio;
     private String compañiaEnvio;
 
-    /**
-     * @return the id
-     */
-    public String getId() {
-        return id;
+    public Envio(String idEnvio, String direccionEnvio, String estadoEnvio, Date fechaEnvio, String compañiaEnvio) {
+        this.idEnvio = idEnvio;
+        this.direccionEnvio = direccionEnvio;
+        this.estadoEnvio = estadoEnvio;
+        this.fechaEnvio = fechaEnvio;
+        this.compañiaEnvio = compañiaEnvio;
     }
 
     /**
-     * @param id the id to set
+     * @return the id
      */
-    public void setId(String id) {
-        this.id = id;
+    public String getIdEnvio() {
+        return idEnvio;
+    }
+
+    /**
+     * @param idEnvio the id to set
+     */
+    public void setIdEnvio(String idEnvio) {
+        this.idEnvio = idEnvio;
     }
 
     /**
