@@ -10,4 +10,15 @@
         <maven.compiler.target>18</maven.compiler.target>
         <exec.mainClass>victoralarcon.administradordeclientes.AdministradorDeClientes</exec.mainClass>
     </properties>
+    
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.29</version>
+        </dependency>
+
+    </dependencies>
+
 </project>

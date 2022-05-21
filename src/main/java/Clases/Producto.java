@@ -26,6 +26,12 @@ public class Producto {
         this.precio = precio;
     }
     
+        public Producto( String nombre, String proveedor, int precio) {
+        this.nombre = nombre;
+        this.proveedor = proveedor;
+        this.precio = precio;
+    }
+    
     
    
     /**

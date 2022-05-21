@@ -4,8 +4,11 @@
  */
 package Vista;
 
+import Clases.Cliente;
+import Clases.CltJuridico;
 import Clases.Producto;
 import Clases.LineaProducto;
+import Controller.Controller;
 import java.util.LinkedList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -17,6 +20,9 @@ import javax.swing.JOptionPane;
  */
 public class View extends javax.swing.JFrame {
     
+    Controller Controller;
+    
+    
     LinkedList<Producto> listaProductos = new LinkedList<>();
     LinkedList<LineaProducto> listaLineaProductos = new LinkedList<>();
     
@@ -25,6 +31,7 @@ public class View extends javax.swing.JFrame {
      */
     public View() {
         initComponents();
+        this.Controller = new Controller();
     }
 
     /**
@@ -72,11 +79,11 @@ public class View extends javax.swing.JFrame {
         nit = new javax.swing.JLabel();
         txtNit = new javax.swing.JTextField();
         nit1 = new javax.swing.JLabel();
-        txtRazonSocial1 = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
         nit2 = new javax.swing.JLabel();
-        txtNit1 = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         nit3 = new javax.swing.JLabel();
-        txtNit2 = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
         btnBuscarClienteJuridico = new javax.swing.JButton();
         btnCrearClienteJuridico = new javax.swing.JButton();
         btnEditarClienteJuridico = new javax.swing.JButton();
@@ -357,8 +364,18 @@ public class View extends javax.swing.JFrame {
         btnBuscarClienteJuridico.setText("Buscar");
 
         btnCrearClienteJuridico.setText("Crear");
+        btnCrearClienteJuridico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearClienteJuridicoActionPerformed(evt);
+            }
+        });
 
         btnEditarClienteJuridico.setText("Editar");
+        btnEditarClienteJuridico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarClienteJuridicoActionPerformed(evt);
+            }
+        });
 
         btnEliminarClienteJuridico.setText("Eliminar");
 
@@ -386,7 +403,7 @@ public class View extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtRazonSocial1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(nit2, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
@@ -394,9 +411,9 @@ public class View extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel7Layout.createSequentialGroup()
-                                        .addComponent(txtNit1)
+                                        .addComponent(txtEmail)
                                         .addGap(255, 255, 255))
-                                    .addComponent(txtNit2))))
+                                    .addComponent(txtDireccion))))
                         .addGap(46, 46, 46))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(btnBuscarClienteJuridico, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -425,16 +442,16 @@ public class View extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNit, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRazonSocial1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nit1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nit2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNit1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nit, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNit2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditarClienteJuridico, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -748,10 +765,9 @@ public class View extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Los campos deben contener informacion valida");
             } else {
                 Producto p = new Producto(id, nombre, proveedor, precio);
-                listaProductos.add(p);
-                JOptionPane.showMessageDialog(this, "Producto añadido con exito");
+                this.Controller.crearProducto(p);
                 limpiarCamposProductos();
-                this.fillJComboBox();
+                JOptionPane.showMessageDialog(this, "Producto añadido con exito");
             }
         }catch(Exception e) {
             JOptionPane.showMessageDialog(this, "Ingresa un precio");
@@ -765,7 +781,7 @@ public class View extends javax.swing.JFrame {
         precioProducto.setText("");
     }
     
-    private void fillJComboBox() {
+   /** private void fillJComboBox() {
         DefaultComboBoxModel lista = new DefaultComboBoxModel();
         
         for(Producto p : listaProductos){
@@ -774,63 +790,38 @@ public class View extends javax.swing.JFrame {
             
         }
         listaDeProductos.setModel(lista);
-    }
+    } **/
     
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         String id = productoId.getText();
-        boolean encontrado = false;
-        for (Producto p : listaProductos) {
-            if (p.getId().equals(id)){
-                this.listaProductos.remove(p);
-                JOptionPane.showMessageDialog(this, "Producto Eliminado con Exito");
-                limpiarCamposProductos();
-                fillJComboBox();
-                encontrado = true;
-                break;
-            }
-        } if(!encontrado) {
-            JOptionPane.showMessageDialog(this, "Codigo no encontrado");
-        }
+        this.Controller.eliminarProducto(id);
+        JOptionPane.showMessageDialog(this, "Producto Eliminado con Exito");
+        limpiarCamposProductos();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnBuscar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar3ActionPerformed
         String id = productoId.getText();
         boolean encontrado = false;
+        Producto p = (Producto) Controller.buscarProducto(id);
         
-        for (Producto p : listaProductos) {
-            if (p.getId().equals(id)){
-                nombreProducto.setText(p.getNombre());
-                proveedorProducto.setText(p.getProveedor());
-                precioProducto.setText(p.getPrecio() + "");
-                encontrado = true;
-                break;
-            }
-        } if(!encontrado) {
+        if(p == null){
             JOptionPane.showMessageDialog(this, "Codigo no encontrado");
+        }else {
+            nombreProducto.setText(p.getNombre());
+            proveedorProducto.setText(p.getProveedor());
+            precioProducto.setText(p.getPrecio() + "");
+            encontrado = true;
         }
     }//GEN-LAST:event_btnBuscar3ActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         String id = productoId.getText();
-        boolean encontrado = false;
-        
-        for (Producto p : listaProductos) {
-            if (p.getId().equals(id)){
-                String nombre = nombreProducto.getText();
-                String proveedor = proveedorProducto.getText();
-                int precio = Integer.parseInt(precioProducto.getText());
-                p.setNombre(nombre);
-                p.setProveedor(proveedor);
-                p.setPrecio(precio);
-                encontrado = true;
-                JOptionPane.showMessageDialog(this, "Producto Editado con Exito");
-                fillJComboBox();
-                limpiarCamposProductos();
-                break;
-            }
-        } if(!encontrado) {
-            JOptionPane.showMessageDialog(this, "Codigo no encontrado");
-        }
+        String nombre = nombreProducto.getText();
+        String proveedor = proveedorProducto.getText();
+        int precio = Integer.parseInt(precioProducto.getText());
+        Producto p = new Producto(id, nombre, proveedor, precio);
+        this.Controller.editarProducto(p);
+        JOptionPane.showMessageDialog(this, "Producto Editado con exito");
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnAddProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductoActionPerformed
@@ -851,6 +842,45 @@ public class View extends javax.swing.JFrame {
         limpiarCamposLineaProductos();
     }//GEN-LAST:event_btnAddProductoActionPerformed
 
+    private void btnCrearClienteJuridicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearClienteJuridicoActionPerformed
+        String id = txtIdClienteJuridico.getText();
+        String direccion = txtDireccion.getText();
+        String nit = txtNit.getText();
+        String telefono = txtTelefono.getText();
+        String razonSocial = txtRazonSocial.getText();
+        String email = txtEmail.getText();
+        
+        if(txtIdClienteJuridico.equals("") ||txtNit.equals("") ) {
+            JOptionPane.showMessageDialog(this, "Los campos deben contener informacion valida");
+        } else {
+            CltJuridico c = new CltJuridico(razonSocial, nit, id, direccion, telefono, email);
+            this.Controller.crearCliente(c);
+            JOptionPane.showMessageDialog(this, "Cliente creado exitosamente");
+            limpiarCamposCliente();
+        }
+    }//GEN-LAST:event_btnCrearClienteJuridicoActionPerformed
+
+    private void btnEditarClienteJuridicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarClienteJuridicoActionPerformed
+        String id = txtIdClienteJuridico.getText();
+        String direccion = txtDireccion.getText();
+        String nit = txtNit.getText();
+        String telefono = txtTelefono.getText();
+        String razonSocial = txtRazonSocial.getText();
+        String email = txtEmail.getText();
+        CltJuridico c = new CltJuridico(razonSocial, nit, id, direccion, telefono, email);
+        this.Controller.editarCliente(c);
+        JOptionPane.showMessageDialog(this, "Producto Editado con exito");
+    }//GEN-LAST:event_btnEditarClienteJuridicoActionPerformed
+
+    private void limpiarCamposCliente(){
+        txtIdClienteJuridico.setText("");
+        txtDireccion.setText("");
+        txtNit.setText("");
+        txtTelefono.setText("");
+        txtRazonSocial.setText("");
+        txtEmail.setText("");
+    }
+    
     private void limpiarCamposLineaProductos() {
         listaDeProductos.setSelectedItem(ABORT);
         cantidadCarrito.setText("");
@@ -974,23 +1004,23 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JLabel segundoNombre;
     private javax.swing.JLabel telefonoClienteNatural;
     private javax.swing.JLabel totalPedido;
+    private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtDireccionNatural;
     private javax.swing.JTextField txtDocumento;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEmailNatural;
     private javax.swing.JTextField txtFecha1;
     private javax.swing.JTextField txtIdClienteJuridico;
     private javax.swing.JTextField txtIdClienteNatural;
     private javax.swing.JTextField txtIdPedido;
     private javax.swing.JTextField txtNit;
-    private javax.swing.JTextField txtNit1;
-    private javax.swing.JTextField txtNit2;
     private javax.swing.JTextField txtPrimerApellido;
     private javax.swing.JTextField txtPrimerNombre;
     private javax.swing.JTextField txtRazonSocial;
-    private javax.swing.JTextField txtRazonSocial1;
     private javax.swing.JTextField txtSegundoApellido;
     private javax.swing.JTextField txtSegundoNombre;
     private javax.swing.JTextField txtTelefenoClienteNatural;
+    private javax.swing.JTextField txtTelefono;
     private javax.swing.JTextField txtTotalPedido;
     // End of variables declaration//GEN-END:variables
 }
