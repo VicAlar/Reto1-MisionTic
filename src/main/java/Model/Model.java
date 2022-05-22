@@ -124,39 +124,62 @@ public class Model {
     public boolean editarCliente(CltJuridico c){
         try (Connection conn = DriverManager.getConnection(DbData.getUrl(), DbData.getUser(), DbData.getPassword())) {
             String query = "UPDATE tb_clientes set Direccion = ?, Email = ?, Telefono = ? WHERE code = ?";
-            PreparedStatement stmtCliente = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement stmtCliente = conn.prepareStatement(query);
             stmtCliente.setString(1, c.getDireccion());
             stmtCliente.setString(2, c.getEmail());
             stmtCliente.setString(3, c.getTelefono());
-            int rowInserted = stmtCliente.executeUpdate();
-            if (rowInserted > 0) {
-                ResultSet generatedKeys = stmtCliente.getGeneratedKeys();
-                if(generatedKeys.next()){
-                    int idCliente = generatedKeys.getInt(1);
-                    query = "UPDATE tb_clientesjuridicos set Nit = ?, RazonSocial = ? WHERE IdCliente = ?;";
-                    PreparedStatement stmtJuridico = conn.prepareStatement(query);
-                    stmtJuridico.setString(1, c.getNit());
-                    stmtJuridico.setString(2, c.getRazonSocial());
-                    stmtJuridico.setInt(3, idCliente);
-                    int rowsInserted = stmtJuridico.executeUpdate();
-                    if(rowsInserted > 0){
-                        return true;
-                    }
-                }
-            }
-        } catch(Exception e) {
+            stmtCliente.setString(4, c.getId());
+            
+            String queryJ = "UPDATE tb_clientesjuridicos set Nit = ?, RazonSocial = ? WHERE IdCliente = ?";
+            PreparedStatement stmtJuridico = conn.prepareStatement(queryJ);
+            stmtJuridico.setString(1, c.getNit());
+            stmtJuridico.setString(2, c.getRazonSocial());
+            stmtJuridico.setInt(3, c.getCode());
+            int rowJUpdated = stmtJuridico.executeUpdate();
+            int rowCUpdated = stmtCliente.executeUpdate();
+            return rowCUpdated > 0 && rowJUpdated > 0;
+        } catch(SQLException e) {
+            return false;
+        }
+    }
+    
+    public boolean eliminarCliente(String id){
+        try (Connection conn = DriverManager.getConnection(DbData.getUrl(), DbData.getUser(), DbData.getPassword())) {
+            String query = "DELETE FROM tb_clientesjuridicos where IdCliente = ?";
+            PreparedStatement stmtC = conn.prepareStatement(query);
+            stmtC.setString(1, id);
+            
+            String query2 = "DELETE FROM tb_clientes where Id = ?";
+            PreparedStatement stmtJ = conn.prepareStatement(query2);
+            stmtJ.setString(1, id);
+            stmtC.executeUpdate();
+            stmtJ.executeUpdate();
+        }catch(SQLException e){
             return false;
         }
         return true;
     }
     
-    public boolean eliminarCliente(String id){
-        return true;
-    }
-    
     public CltJuridico buscarCliente(String id){
         CltJuridico c = null;
-        
-        return c;
+        try (Connection conn = DriverManager.getConnection(DbData.getUrl(), DbData.getUser(), DbData.getPassword())) {
+            String query = "SELECT * FROM tb_clientes as c INNER JOIN tb_clientesjuridicos AS j on c.Id = j.IdCliente WHERE c.code = ?";
+            PreparedStatement stmtCliente = conn.prepareStatement(query);
+            stmtCliente.setString(1, id);
+            ResultSet results = stmtCliente.executeQuery();
+            if(results.next()){
+                int idC = results.getInt(1);
+                String direccion = results.getString(2);
+                String telefono = results.getString(3);
+                String email = results.getString(4);
+                String code = results.getString(5);
+                String razonsocial = results.getString(7);
+                String nit = results.getString(8);
+                c = new CltJuridico(razonsocial, nit, id, idC, direccion, telefono, email);
+            }
+            return c;
+        } catch (Exception e){
+            return c;
+        }
     }
 }

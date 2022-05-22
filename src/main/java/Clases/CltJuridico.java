@@ -18,6 +18,14 @@ public class CltJuridico extends Cliente{
         this.nit = nit;
     }
 
+    public CltJuridico(String razonSocial, String nit, String id, int code, String direccion, String telefono, String email) {
+        super(id, code, direccion, telefono, email);
+        this.razonSocial = razonSocial;
+        this.nit = nit;
+    }
+    
+    
+
     /**
      * @return the razonSocial
      */

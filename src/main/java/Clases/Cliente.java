@@ -10,12 +10,21 @@ package Clases;
  */
 public class Cliente {
     private String id;
+    private int code;
     private String direccion;
     private String telefono;
     private String email;
 
     public Cliente(String id, String direccion, String telefono, String email) {
         this.id = id;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.email = email;
+    }
+
+    public Cliente(String id, int code, String direccion, String telefono, String email) {
+        this.id = id;
+        this.code = code;
         this.direccion = direccion;
         this.telefono = telefono;
         this.email = email;
@@ -77,5 +86,19 @@ public class Cliente {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * @return the code
+     */
+    public int getCode() {
+        return code;
+    }
+
+    /**
+     * @param code the code to set
+     */
+    public void setCode(int code) {
+        this.code = code;
     }
 }

@@ -46,6 +46,7 @@ public class View extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         btnBuscar1 = new javax.swing.JButton();
         btnBuscar2 = new javax.swing.JButton();
+        txtIdC = new javax.swing.JTextField();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         idLabel = new javax.swing.JLabel();
@@ -136,6 +137,8 @@ public class View extends javax.swing.JFrame {
 
         btnBuscar2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnBuscar2.setText("Buscar");
+
+        txtIdC.setEditable(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -251,7 +254,7 @@ public class View extends javax.swing.JFrame {
                     .addComponent(btnCrear)
                     .addComponent(btnEditar)
                     .addComponent(btnEliminar))
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Producto", jPanel1);
@@ -309,7 +312,7 @@ public class View extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cantidadProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cantidadCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
                 .addComponent(btnAddProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
@@ -338,7 +341,7 @@ public class View extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Carrito de Compras", jPanel3);
@@ -362,6 +365,11 @@ public class View extends javax.swing.JFrame {
         nit3.setText("Telefono");
 
         btnBuscarClienteJuridico.setText("Buscar");
+        btnBuscarClienteJuridico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarClienteJuridicoActionPerformed(evt);
+            }
+        });
 
         btnCrearClienteJuridico.setText("Crear");
         btnCrearClienteJuridico.addActionListener(new java.awt.event.ActionListener() {
@@ -378,6 +386,11 @@ public class View extends javax.swing.JFrame {
         });
 
         btnEliminarClienteJuridico.setText("Eliminar");
+        btnEliminarClienteJuridico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarClienteJuridicoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -410,10 +423,10 @@ public class View extends javax.swing.JFrame {
                                     .addComponent(nit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtDireccion)
                                     .addGroup(jPanel7Layout.createSequentialGroup()
-                                        .addComponent(txtEmail)
-                                        .addGap(255, 255, 255))
-                                    .addComponent(txtDireccion))))
+                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(46, 46, 46))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(btnBuscarClienteJuridico, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -458,12 +471,12 @@ public class View extends javax.swing.JFrame {
                     .addComponent(btnBuscarClienteJuridico, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCrearClienteJuridico, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminarClienteJuridico, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
                     .addGap(87, 87, 87)
                     .addComponent(nit3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(234, Short.MAX_VALUE)))
+                    .addContainerGap(214, Short.MAX_VALUE)))
         );
 
         jTabbedPane2.addTab("Cliente Juridico", jPanel7);
@@ -600,7 +613,7 @@ public class View extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(direccionNatural, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDireccionNatural, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditarClienteNatural, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarClienteNatural, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -725,7 +738,7 @@ public class View extends javax.swing.JFrame {
                         .addComponent(txtTotalPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(estadoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLimpiarFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -794,14 +807,20 @@ public class View extends javax.swing.JFrame {
     
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         String id = productoId.getText();
-        this.Controller.eliminarProducto(id);
-        JOptionPane.showMessageDialog(this, "Producto Eliminado con Exito");
-        limpiarCamposProductos();
+        boolean response = this.Controller.eliminarProducto(id);
+        
+        if(response){
+            JOptionPane.showMessageDialog(this, "Producto Eliminado con Exito");
+            limpiarCamposProductos();
+        }else {
+            JOptionPane.showMessageDialog(this, "El producto no pudo ser eliminado");
+        }
+        
+        
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnBuscar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar3ActionPerformed
         String id = productoId.getText();
-        boolean encontrado = false;
         Producto p = (Producto) Controller.buscarProducto(id);
         
         if(p == null){
@@ -810,7 +829,6 @@ public class View extends javax.swing.JFrame {
             nombreProducto.setText(p.getNombre());
             proveedorProducto.setText(p.getProveedor());
             precioProducto.setText(p.getPrecio() + "");
-            encontrado = true;
         }
     }//GEN-LAST:event_btnBuscar3ActionPerformed
 
@@ -867,10 +885,49 @@ public class View extends javax.swing.JFrame {
         String telefono = txtTelefono.getText();
         String razonSocial = txtRazonSocial.getText();
         String email = txtEmail.getText();
-        CltJuridico c = new CltJuridico(razonSocial, nit, id, direccion, telefono, email);
-        this.Controller.editarCliente(c);
-        JOptionPane.showMessageDialog(this, "Producto Editado con exito");
+        int idC = Integer.parseInt(txtIdC.getText());
+        
+        try {
+            CltJuridico c = new CltJuridico(razonSocial, nit, id, idC, direccion, telefono, email);
+            boolean response = Controller.editarCliente(c);
+            if(response){
+                JOptionPane.showMessageDialog(this, "Producto editado con exito");
+                limpiarCamposCliente();
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al editar el producto");
+            }
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, e);
+        }   
+        
     }//GEN-LAST:event_btnEditarClienteJuridicoActionPerformed
+
+    private void btnBuscarClienteJuridicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteJuridicoActionPerformed
+        String id = txtIdClienteJuridico.getText();
+        CltJuridico c = (CltJuridico) Controller.buscarCliente(id);
+        
+        if(c == null){
+            JOptionPane.showMessageDialog(this, "Codigo no encontrado");
+        }else {
+        txtDireccion.setText(c.getDireccion());
+        txtNit.setText(c.getNit());
+        txtTelefono.setText(c.getTelefono());
+        txtRazonSocial.setText(c.getRazonSocial());
+        txtEmail.setText(c.getEmail());
+        txtIdC.setText(c.getCode() + "");
+        } 
+    }//GEN-LAST:event_btnBuscarClienteJuridicoActionPerformed
+
+    private void btnEliminarClienteJuridicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarClienteJuridicoActionPerformed
+        String id = txtIdC.getText();
+        boolean response = this.Controller.eliminarCliente(id);
+        if(response){
+            JOptionPane.showMessageDialog(this, "Cliente Eliminado con exito");
+            limpiarCamposCliente();
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al eliminar el cliente");
+        }
+    }//GEN-LAST:event_btnEliminarClienteJuridicoActionPerformed
 
     private void limpiarCamposCliente(){
         txtIdClienteJuridico.setText("");
@@ -1010,6 +1067,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEmailNatural;
     private javax.swing.JTextField txtFecha1;
+    private javax.swing.JTextField txtIdC;
     private javax.swing.JTextField txtIdClienteJuridico;
     private javax.swing.JTextField txtIdClienteNatural;
     private javax.swing.JTextField txtIdPedido;
